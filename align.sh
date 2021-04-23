@@ -62,7 +62,8 @@ echo "applying transform to remaining mp2rage volumes"
 for i in ${volumes}
 do
 	if [[ ! ${i} == 'unit1' ]]; then
-		flirt -in ${i}.cropped.nii.gz -ref t1_brain.nii.gz -init mp2rage2t1.mat -applyxfm -out ./output/${i}.nii.gz
+		outname=`echo ${i/_/.}`
+		flirt -in ${i}.cropped.nii.gz -ref t1_brain.nii.gz -init mp2rage2t1.mat -applyxfm -out ./output/${outname}.nii.gz
 	fi
 done
 
