@@ -2,4 +2,4 @@
 #PBS -l nodes=1:ppn=1,vmem=12gb,walltime=0:45:00
 #PBS -N app-align-mp2rage-to-t1
 
-time singularity exec -e docker://brainlife/fsl:6.0.0 ./align.sh
+time singularity exec -e docker://brainlife/fsl:5.0.11 ./align.sh
