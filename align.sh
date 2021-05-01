@@ -5,10 +5,15 @@ set -x
 
 # configure variables
 mag_inv1=`jq -r '.mag_inv1' config.json`
+mag_inv1_json=`jq -r '.mag_inv1_json' config.json`
 mag_inv2=`jq -r '.mag_inv2' config.json`
+mag_inv2_json=`jq -r '.mag_inv2_json' config.json`
 phase_inv1=`jq -r '.phase_inv1' config.json`
+phase_inv1_json=`jq -r '.phase_inv1_json' config.json`
 phase_inv2=`jq -r '.phase_inv2' config.json`
+phase_inv2_json=`jq -r '.phase_inv2_json' config.json`
 unit1=`jq -r '.unit1' config.json`
+unit1_json=`jq -r '.unit1_json' config.json`
 t1=`jq -r '.t1' config.json`
 crop=`jq -r '.crop' config.json`
 
@@ -45,7 +50,7 @@ else
 	for i in ${volumes}
 	do
 		vol=$(eval "echo \$${i}")
-		cp ${vol} ./${i}.cropoped.nii.gz
+		cp ${vol} ./${i}.cropped.nii.gz
 	done
 fi
 
@@ -64,6 +69,12 @@ do
 	if [[ ! ${i} == 'unit1' ]]; then
 		flirt -in ${i}.cropped.nii.gz -ref t1_brain.nii.gz -init mp2rage2t1.mat -applyxfm -out ./output/${i}.nii.gz
 	fi
+done
+
+for i in ${volumes}
+do
+	vol_json=$(eval "echo \$${i}_json")
+	cp -v ${vol_json} ./output/
 done
 
 echo "alignment complete!"
