@@ -57,7 +57,7 @@ You can submit this App online at [https://doi.org/https://doi.org/10.25663/brai
 	"phase_inv2": "/input/mp2rage/phase.inv2.nii.gz"
 	"unit1": "/input/mp2rage/uni1.nii.gz,
 	"mag_inv1_json": "/input/mp2rage/mag.inv1.json",
-	"phase_inv1_json: "/input/mp2rage/phase.inv1.json",
+	"phase_inv1_json": "/input/mp2rage/phase.inv1.json",
 	"mag_inv2_json": "/input/mp2rage/mag.inv2.json",
 	"unit1_json": "/input/mp2rage/unit1.json",
 	"crop": true
