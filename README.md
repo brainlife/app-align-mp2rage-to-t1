@@ -12,7 +12,7 @@ This app will This app will align mp2rage data to an anatomical t1w image using 
 ### Contributors
 
 - Sophia Vinci-Booher (svinci@iu.edu)
--Soichi Hayashi (shayashi@iu.edu)
+- Soichi Hayashi (shayashi@iu.edu)
 
 ### Funding Acknowledgement
 
@@ -55,7 +55,7 @@ You can submit this App online at [https://doi.org/https://doi.org/10.25663/brai
 	"phase_inv1": "/input/mp2rage/phase.inv1.nii.gz",
 	"mag_inv2": "/input/mp2rage/mag.inv2.nii.gz",
 	"phase_inv2": "/input/mp2rage/phase.inv2.nii.gz"
-	"unit1": "/input/mp2rage/uni1.nii.gz,
+	"unit1": "/input/mp2rage/uni1.nii.gz",
 	"mag_inv1_json": "/input/mp2rage/mag.inv1.json",
 	"phase_inv1_json": "/input/mp2rage/phase.inv1.json",
 	"mag_inv2_json": "/input/mp2rage/mag.inv2.json",
