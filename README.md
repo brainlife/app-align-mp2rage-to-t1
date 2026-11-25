@@ -10,9 +10,9 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-> 📍 **This branch, `uni-included-v1.0`, is the brainlife.io App Align mp2rage volumes to T1 using FSL Flirt** ([doi:10.25663/brainlife.app.509](https://doi.org/10.25663/brainlife.app.509)).
+> **This branch, `uni-included-v1.0`, is the brainlife.io App Align mp2rage volumes to T1 using FSL Flirt** ([doi:10.25663/brainlife.app.509](https://doi.org/10.25663/brainlife.app.509)).
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -22,27 +22,27 @@ Optionally crops the MP2RAGE volumes with robustfov (field of view from UNI), sk
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/anat/t1w` · `neuro/anat/mp2rage` |
-| 📤 **Outputs** | `neuro/anat/mp2rage` |
-| 🐳 **Container** | `brainlife/fsl:5.0.11` |
-| ⚙️ **Resources** | 1 CPUs · 12 GB memory · 0.75 h walltime |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.509](https://doi.org/10.25663/brainlife.app.509) |
+| **Inputs** | `neuro/anat/t1w` · `neuro/anat/mp2rage` |
+| **Outputs** | `neuro/anat/mp2rage` |
+| **Container** | `brainlife/fsl:5.0.11` |
+| **Resources** | 1 CPUs · 12 GB memory · 0.75 h walltime |
+| **Run it** | [doi.org/10.25663/brainlife.app.509](https://doi.org/10.25663/brainlife.app.509) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `t1` | `neuro/anat/t1w` (acpc_aligned) | yes | reference t1 to align mp2rage data to |
 | `mp2rage` | `neuro/anat/mp2rage` | yes | mp2rage data to align |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
 | `output` | `neuro/anat/mp2rage` | MP2RAGE volumes resampled into the reference T1 space. |
 
 <details>
-<summary><b>⚙️ Parameters</b> (1)</summary>
+<summary><b>Parameters</b> (1)</summary>
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -52,15 +52,15 @@ Optionally crops the MP2RAGE volumes with robustfov (field of view from UNI), sk
 
 <!-- brainlife-app:end -->
 
-## 🚀 Running the App
+## Running the App
 
 The App crops the MP2RAGE volumes with `robustfov` (optional, field of view taken from the UNI image), skull-strips the reference T1 with `bet`, estimates a FLIRT transform from the UNI image to the T1 brain, and applies that transform to every other MP2RAGE volume. This brings MP2RAGE data into the same space as the anatomical T1w used for most analyses.
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App at [doi.org/10.25663/brainlife.app.509](https://doi.org/10.25663/brainlife.app.509), choose an ACPC-aligned T1-weighted dataset and an MP2RAGE dataset of the same subject (it must include the UNI image), and press **Execute**. The aligned MP2RAGE is archived to your project as a `neuro/anat/mp2rage` dataset tagged `acpc_aligned`.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqlang.github.io/jq/). The App runs FSL 5.0.11 from the `brainlife/fsl:5.0.11` container; without Singularity you need a local [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) installation.
 
@@ -87,7 +87,7 @@ You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqla
    ./main
    ```
 
-### 🧪 Sample data
+### Sample data
 
 Download sample datasets from brainlife.io with the [brainlife CLI](https://github.com/brainlife/cli):
 
@@ -98,7 +98,7 @@ mkdir input
 bl dataset download <dataset id>
 ```
 
-## 📦 Outputs
+## Outputs
 
 ```text
 output/
@@ -111,12 +111,12 @@ output/
 
 The FLIRT matrix (`mp2rage2t1.mat`) and the skull-stripped T1 (`t1_brain.nii.gz`) are left in the working directory.
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **Run fails with `crop` set to `false`**: on the `uni-included-v1.0` branch the uncropped copies are written as `*.cropoped.nii.gz` (a typo), so FLIRT cannot find `unit1.cropped.nii.gz`. Keep `crop` set to `true` (the default). The `master` branch fixes this.
 - **Poor alignment**: the transform is estimated from the UNI image only and applied to every other volume; check that the MP2RAGE dataset includes the UNI image and that the T1 is ACPC-aligned.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -129,13 +129,13 @@ The FLIRT matrix (`mp2rage2t1.mat`) and the skull-stripped T1 (`t1_brain.nii.gz`
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Brad Caron
 
 **Contributors:** Sophia Vinci-Booher, Soichi Hayashi
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -154,6 +154,6 @@ The FLIRT matrix (`mp2rage2t1.mat`) and the skull-stripped T1 (`t1_brain.nii.gz`
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 [MIT](LICENSE). FSL itself is distributed under its own [license](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence).
