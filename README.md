@@ -3,6 +3,31 @@
 
 # Align mp2rage volumes to T1 using FSL Flirt
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+**Aligns MP2RAGE volumes (UNI, inversion magnitudes and phases) to a T1-weighted image with FSL FLIRT, using a transform estimated from the UNI image, and outputs the aligned MP2RAGE.**
+
+Optionally crops the MP2RAGE volumes with robustfov (field of view from UNI), skull-strips the reference T1 with bet, estimates a FLIRT transform from the UNI image to the T1 brain, and applies it to every other MP2RAGE volume. Use it to bring MP2RAGE data into the same space as an ACPC-aligned T1w for further analysis. Needs MP2RAGE data that includes the UNI image and an ACPC-aligned T1w of the same subject.
+
+Run it on brainlife.io: [https://doi.org/10.25663/brainlife.app.509](https://doi.org/10.25663/brainlife.app.509)
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `t1` | `neuro/anat/t1w` (acpc_aligned) | yes | reference t1 to align mp2rage data to |
+| `mp2rage` | `neuro/anat/mp2rage` | yes | mp2rage data to align |
+
+| Output | Datatype | Description |
+|---|---|---|
+| `output` | `neuro/anat/mp2rage` | MP2RAGE volumes resampled into the reference T1 space. |
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `crop` | boolean | `true` | If true, will crop using fsl robustfov. if false, will not. default == true |
+
+Runtime: container `brainlife/fsl:5.0.11`; 1 CPUs; 12 GB memory; 0.75 h walltime.
+
+<!-- brainlife-app:end -->
+
 This app will This app will align mp2rage data to an anatomical t1w image using FSL's flirt command. This is done to ensure that mp2rage data is in same space as anatomical t1w image, which is used for most analyses.
 
 ### Authors
